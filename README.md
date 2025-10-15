@@ -5,5 +5,5 @@ Knight traversal project in JS using array to represent chessboard
 
 Utilize BFS algorithm to find shortest path between any start and end squares
 
-Chessboard UI
+Chessboard UI with shortest path displayed
 ![Screenshot](Screenshot.png)
