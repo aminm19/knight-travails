@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knight's Travails</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>♞ Knight's Travails</h1>
+            <p>Click to select start and end positions. The knight will find the shortest path!</p>
+        </header>
+
+        <main>
+            <div class="game-area">
+                <div class="chessboard-container">
+                    <div class="coordinates-row top">
+                        <span>a</span>
+                        <span>b</span>
+                        <span>c</span>
+                        <span>d</span>
+                        <span>e</span>
+                        <span>f</span>
+                        <span>g</span>
+                        <span>h</span>
+                    </div>
+                    
+                    <div class="chessboard-wrapper">
+                        <div class="coordinates-col left">
+                            <span>8</span>
+                            <span>7</span>
+                            <span>6</span>
+                            <span>5</span>
+                            <span>4</span>
+                            <span>3</span>
+                            <span>2</span>
+                            <span>1</span>
+                        </div>
+                        
+                        <div id="chessboard" class="chessboard">
+                            <!-- Squares generated in JavaScript -->
+                        </div>
+                        
+                        <div class="coordinates-col right">
+                            <span>8</span>
+                            <span>7</span>
+                            <span>6</span>
+                            <span>5</span>
+                            <span>4</span>
+                            <span>3</span>
+                            <span>2</span>
+                            <span>1</span>
+                        </div>
+                    </div>
+                    
+                    <div class="coordinates-row bottom">
+                        <span>a</span>
+                        <span>b</span>
+                        <span>c</span>
+                        <span>d</span>
+                        <span>e</span>
+                        <span>f</span>
+                        <span>g</span>
+                        <span>h</span>
+                    </div>
+                </div>
+
+                <div class="controls-panel">
+                    <div class="selection-status">
+                        <div class="status-item">
+                            <label>Start Position:</label>
+                            <span id="start-position">Not selected</span>
+                        </div>
+                        <div class="status-item">
+                            <label>End Position:</label>
+                            <span id="end-position">Not selected</span>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button id="find-path-btn" class="btn btn-primary" disabled>
+                            Find Shortest Path
+                        </button>
+                        <button id="reset-btn" class="btn btn-secondary">
+                            Reset Board
+                        </button>
+                        <button id="animate-btn" class="btn btn-accent" disabled>
+                            Animate Path
+                        </button>
+                    </div>
+
+                    <div class="path-info">
+                        <div class="info-section">
+                            <h3>Path Details</h3>
+                            <div class="path-stats">
+                                <div class="stat">
+                                    <label>Moves:</label>
+                                    <span id="move-count">-</span>
+                                </div>
+                                <div class="stat">
+                                    <label>Status:</label>
+                                    <span id="path-status">Select start and end positions</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="path-sequence">
+                            <h4>Path Sequence:</h4>
+                            <div id="path-list" class="path-coords">
+                                <em>No path calculated yet</em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Built by Amin Mojarad | <a href="https://github.com/aminm19/knight-travails" target="_blank">Github</a></p>
+        </footer>
+    </div>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>

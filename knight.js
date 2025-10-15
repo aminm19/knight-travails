@@ -58,9 +58,30 @@ function traverse(start, end) {
     }
 }
 
-// Export functions for testing
+// Utility function to convert chess notation to coordinates
+function chessToCoords(notation) {
+    const file = notation.charAt(0).toLowerCase();
+    const rank = parseInt(notation.charAt(1));
+    
+    const fileNum = file.charCodeAt(0) - 'a'.charCodeAt(0);
+    const rankNum = 8 - rank; // Convert to 0-7 where 0 is rank 8
+    
+    return [rankNum, fileNum];
+}
+
+// Utility function to convert coordinates to chess notation
+function coordsToChess(coords) {
+    const rank = 8 - coords[0]; // Convert back to 1-8
+    const file = String.fromCharCode('a'.charCodeAt(0) + coords[1]);
+    
+    return file + rank;
+}
+
+// Export functions for testing and web use
 export {
     makeSquare,
     getKnightMoves,
-    traverse
+    traverse,
+    chessToCoords,
+    coordsToChess
 };

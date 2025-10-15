@@ -1,0 +1,395 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', system-ui, sans-serif;
+    background: #0a0a0a;
+    min-height: 100vh;
+    color: #e8e8e8;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: -0.025em;
+}
+
+header p {
+    font-size: 0.95rem;
+    color: #888;
+    font-weight: 400;
+}
+
+.game-area {
+    display: grid;
+    grid-template-columns: auto 320px;
+    gap: 40px;
+    background: #111111;
+    border: 1px solid #222;
+    border-radius: 8px;
+    padding: 32px;
+    min-height: 600px;
+}
+
+/* Chessboard Styling */
+.chessboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.coordinates-row, .coordinates-col {
+    display: flex;
+    color: #666;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.coordinates-row {
+    display: grid;
+    grid-template-columns: repeat(8, 56px);
+    margin: 8px 0;
+}
+
+.coordinates-row span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chessboard-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.coordinates-col {
+    flex-direction: column;
+    justify-content: space-around;
+    height: 448px;
+    margin: 0 8px;
+}
+
+.coordinates-col span {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, 56px);
+    grid-template-rows: repeat(8, 56px);
+    border: 1px solid #333;
+}
+
+.square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+    font-size: 1.4rem;
+    user-select: none;
+    border: none;
+}
+
+.square.light {
+    background-color: #1a1a1a;
+}
+
+.square.dark {
+    background-color: #2a2a2a;
+}
+
+.square:hover {
+    background-color: #333;
+}
+
+.square.start {
+    background-color: #00ff88;
+    color: #000;
+}
+
+.square.end {
+    background-color: #ff0066;
+    color: #fff;
+}
+
+.square.path {
+    background-color: #0088ff;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.square.current-move {
+    background-color: #ffaa00;
+    color: #000;
+    transform: scale(1.05);
+    animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Controls Panel */
+.controls-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.selection-status {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid #333;
+}
+
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.status-item:last-child {
+    margin-bottom: 0;
+}
+
+.status-item label {
+    font-weight: 500;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.status-item span {
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.btn {
+    padding: 12px 16px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.12s ease;
+    background: #1a1a1a;
+    color: #e8e8e8;
+}
+
+.btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: #00ff88;
+    color: #000;
+    border-color: #00ff88;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #00cc6a;
+    border-color: #00cc6a;
+}
+
+.btn-secondary {
+    background: #333;
+    color: #e8e8e8;
+    border-color: #444;
+}
+
+.btn-secondary:hover {
+    background: #444;
+    border-color: #555;
+}
+
+.btn-accent {
+    background: #0088ff;
+    color: #fff;
+    border-color: #0088ff;
+}
+
+.btn-accent:hover:not(:disabled) {
+    background: #0066cc;
+    border-color: #0066cc;
+}
+
+.path-info {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid #333;
+}
+
+.info-section h3 {
+    margin-bottom: 16px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.path-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+}
+
+.stat label {
+    font-weight: 500;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.stat span {
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.path-sequence h4 {
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.path-coords {
+    background: #111;
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid #222;
+    max-height: 180px;
+    overflow-y: auto;
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+.path-coords em {
+    color: #666;
+    font-style: italic;
+}
+
+.coord-step {
+    display: inline-block;
+    background: #333;
+    padding: 2px 6px;
+    margin: 1px;
+    border-radius: 2px;
+    color: #e8e8e8;
+    font-weight: 500;
+}
+
+.coord-step.active {
+    background: #0088ff;
+    color: #fff;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 16px;
+    }
+    
+    .game-area {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 24px;
+    }
+    
+    .chessboard {
+        grid-template-columns: repeat(8, 42px);
+        grid-template-rows: repeat(8, 42px);
+    }
+    
+    .square {
+        font-size: 1.1rem;
+    }
+    
+    .coordinates-col span, .coordinates-row span {
+        width: 42px;
+        height: 42px;
+        font-size: 0.75rem;
+    }
+    
+    .coordinates-col {
+        height: 336px;
+    }
+    
+    header h1 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 16px 12px;
+    }
+    
+    .game-area {
+        padding: 20px 16px;
+    }
+    
+    .chessboard {
+        grid-template-columns: repeat(8, 36px);
+        grid-template-rows: repeat(8, 36px);
+    }
+    
+    .coordinates-col span, .coordinates-row span {
+        width: 36px;
+        height: 36px;
+        font-size: 0.7rem;
+    }
+    
+    .coordinates-col {
+        height: 288px;
+    }
+    
+    .square {
+        font-size: 0.95rem;
+    }
+}
